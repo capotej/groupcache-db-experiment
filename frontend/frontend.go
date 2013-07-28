@@ -21,6 +21,7 @@ type Frontend struct {
 
 func (s *Frontend) Get(args *api.Load, reply *api.ValueResult) error {
 	var data []byte
+	fmt.Printf("getting %s from groupcache\n", args.Key)
 	err := s.cacheGroup.Get(nil, args.Key,
 		groupcache.AllocatingByteSliceSink(&data))
 
@@ -59,7 +60,7 @@ func main() {
 	var stringcache = groupcache.NewGroup("SlowDBCache", 64<<20, groupcache.GetterFunc(
 		func(ctx groupcache.Context, key string, dest groupcache.Sink) error {
 			result := client.Get(key)
-			fmt.Printf("slave: %s getting %s\n", *port, key)
+			fmt.Printf("asking for %s from dbserver\n", key)
 			dest.SetBytes([]byte(result))
 			return nil
 		}))
