@@ -1,6 +1,8 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/capotej/groupcachedb/server"
 	"github.com/capotej/groupcachedb/slowdb"
 	"github.com/golang/groupcache"
@@ -9,9 +11,14 @@ import (
 
 func main() {
 
+	var port = flag.String("port", "8001", "groupcache port")
+	var master = flag.Bool("master", false, "are we rpc master")
+	var rpcport = flag.String("rpc", "8080", "port for rpc master")
+	flag.Parse()
+
 	db := slowdb.NewSlowDB()
 
-	peers := groupcache.NewHTTPPool("http://localhost:8001")
+	peers := groupcache.NewHTTPPool("http://localhost:" + *port)
 
 	var stringcache = groupcache.NewGroup("SlowDBCache", 64<<20, groupcache.GetterFunc(
 		func(ctx groupcache.Context, key string, dest groupcache.Sink) error {
@@ -20,10 +27,18 @@ func main() {
 			return nil
 		}))
 
-	go http.ListenAndServe("127.0.0.1:8001", http.HandlerFunc(peers.ServeHTTP))
+	fmt.Println(stringcache)
 
-	server := server.NewServer(stringcache, db)
+	peers.Set("http://localhost:8001", "http://localhost:8002", "http://localhost:8003")
 
-	server.Start(":8080")
+	if *master {
+		fmt.Println("master starting on " + *rpcport)
+		go http.ListenAndServe("127.0.0.1:"+*port, http.HandlerFunc(peers.ServeHTTP))
+		server := server.NewServer(stringcache, db)
+		server.Start(":" + *rpcport)
+	} else {
+		fmt.Println("slave starting on " + *port)
+		http.ListenAndServe("127.0.0.1:"+*port, http.HandlerFunc(peers.ServeHTTP))
+	}
 
 }
