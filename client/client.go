@@ -1,48 +1,36 @@
-package main
+package client
+
+// Client for dbserver/slowdb
 
 import "fmt"
-
-import "github.com/capotej/groupcachedb/server"
+import "github.com/capotej/groupcachedb/api"
 import "net/rpc"
-import "os"
 
-func main() {
+type Client struct{}
 
-	switch os.Args[1] {
-	case "get":
-		var key = os.Args[2]
-		client, err := rpc.DialHTTP("tcp", "localhost:8080")
-		if err != nil {
-			fmt.Printf("error %s", err)
-		}
-		args := &server.Load{key}
-		var reply server.ValueResult
-		err = client.Call("Server.Get", args, &reply)
-		if err != nil {
-			fmt.Printf("error %s", err)
-		}
-		fmt.Println(reply)
-		return
-
-	case "set":
-		var key = os.Args[2]
-		var value = os.Args[3]
-
-		client, err := rpc.DialHTTP("tcp", "localhost:8080")
-		if err != nil {
-			fmt.Printf("error %s", err)
-		}
-		args := &server.Store{key, value}
-		var reply int
-		err = client.Call("Server.Set", args, &reply)
-		if err != nil {
-			fmt.Printf("error %s", err)
-		}
-
-		return
+func (c *Client) Get(key string) string {
+	client, err := rpc.DialHTTP("tcp", "localhost:8080")
+	if err != nil {
+		fmt.Printf("error %s", err)
 	}
+	args := &api.Load{key}
+	var reply api.ValueResult
+	err = client.Call("Server.Get", args, &reply)
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
+	return string(reply.Value)
+}
 
-	fmt.Println("please use set or get")
-	return
-
+func (c *Client) Set(key string, value string) {
+	client, err := rpc.DialHTTP("tcp", "localhost:8080")
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
+	args := &api.Store{key, value}
+	var reply int
+	err = client.Call("Server.Set", args, &reply)
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
 }

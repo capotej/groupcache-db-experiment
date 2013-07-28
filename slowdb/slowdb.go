@@ -1,5 +1,7 @@
 package slowdb
 
+// A purposefully slow key/value database
+
 import "time"
 import "fmt"
 

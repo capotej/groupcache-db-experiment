@@ -22,4 +22,6 @@ _testmain.go
 *.exe
 
 groupcachedb
-client/client
+cli/cli
+dbserver/dbserver
+frontend/frontend
