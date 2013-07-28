@@ -8,7 +8,7 @@ type SlowDB struct {
 }
 
 func (db *SlowDB) Get(key string) string {
-	time.Sleep(time.Duration(4) * time.Second)
+	time.Sleep(time.Duration(300) * time.Millisecond)
 	fmt.Printf("getting %s\n", key)
 	return db.data[key]
 }
