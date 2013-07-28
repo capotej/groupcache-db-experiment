@@ -3,7 +3,7 @@ This project simulates a scenario wherein a few frontends running [groupcache](h
 
 # Getting it running
 The following commands will set up this topology:
-![alt tag](https://raw.github.com/capotej/groupcache-db-experiment/master/topology.png)
+![groupcache topology](https://raw.github.com/capotej/groupcache-db-experiment/master/topology.png)
 
 ### Build everything
 
