@@ -3,7 +3,7 @@ This project was created to play with an experiment with go and the groupcache p
 
 # Demo
 The following commands will set up this topology:
-![alt tag](https://raw.github.com/capotej/groupcache-db-experiment/topology.png)
+![alt tag](https://raw.github.com/capotej/groupcache-db-experiment/master/topology.png)
 
 
 ### Build everything
