@@ -6,7 +6,7 @@ This project was created to play with an experiment with go and the groupcache p
 ### Build everything
 
 1. ```git clone git@github.com:capotej/groupcachedb```
-2. sh build.sh
+2. ```sh build.sh```
 
 ### Start DB server
 
