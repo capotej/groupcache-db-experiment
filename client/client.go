@@ -2,9 +2,11 @@ package client
 
 // Client for dbserver/slowdb
 
-import "fmt"
-import "github.com/capotej/groupcachedb/api"
-import "net/rpc"
+import (
+	"fmt"
+	"github.com/capotej/groupcachedb/api"
+	"net/rpc"
+)
 
 type Client struct{}
 
