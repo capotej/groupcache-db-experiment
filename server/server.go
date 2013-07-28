@@ -53,12 +53,12 @@ func NewServer(cacheGroup *groupcache.Group, db *slowdb.SlowDB) *Server {
 	return server
 }
 
-func (s *Server) Start() {
+func (s *Server) Start(port string) {
 
 	rpc.Register(s)
 
 	rpc.HandleHTTP()
-	l, e := net.Listen("tcp", ":1234")
+	l, e := net.Listen("tcp", port)
 	if e != nil {
 		fmt.Println("fatal")
 	}

@@ -11,7 +11,7 @@ func main() {
 	switch os.Args[1] {
 	case "get":
 		var key = os.Args[2]
-		client, err := rpc.DialHTTP("tcp", "localhost:1234")
+		client, err := rpc.DialHTTP("tcp", "localhost:8080")
 		if err != nil {
 			fmt.Printf("error %s", err)
 		}
@@ -28,7 +28,7 @@ func main() {
 		var key = os.Args[2]
 		var value = os.Args[3]
 
-		client, err := rpc.DialHTTP("tcp", "localhost:1234")
+		client, err := rpc.DialHTTP("tcp", "localhost:8080")
 		if err != nil {
 			fmt.Printf("error %s", err)
 		}
