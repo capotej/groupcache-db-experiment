@@ -1,14 +1,13 @@
-# groupcachedb
-This project was created to play with an experiment with go and the groupcache project.
+# groupcache-db-experiment
+This project simulates a scenario wherein a few frontends running groupcache 
 
-# Demo
+# Getting it running
 The following commands will set up this topology:
 ![alt tag](https://raw.github.com/capotej/groupcache-db-experiment/master/topology.png)
 
-
 ### Build everything
 
-1. ```git clone git@github.com:capotej/groupcachedb```
+1. ```git clone git@github.com:capotej/groupcache-db-experiment```
 2. ```sh build.sh```
 
 ### Start DB server
