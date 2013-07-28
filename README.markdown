@@ -2,6 +2,9 @@
 This project was created to play with an experiment with go and the groupcache project.
 
 # Demo
+The following commands will set up this topology:
+![alt tag](https://raw.github.com/capotej/groupcache-db-experiment/topology.png)
+
 
 ### Build everything
 
