@@ -1,5 +1,5 @@
 # groupcache-db-experiment
-This project simulates a scenario wherein a few frontends running [groupcache](http://github.com/golang/groupcache) are fronting a slow database.
+This project simulates a scenario wherein a few frontends running [groupcache](http://github.com/golang/groupcache) are fronting a slow database. See my [blog post](http://www.capotej.com/blog/2013/07/28/playing-with-groupcache/) about it for more details.
 
 # Getting it running
 The following commands will set up this topology:
