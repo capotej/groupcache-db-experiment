@@ -21,7 +21,7 @@ type Frontend struct {
 
 func (s *Frontend) Get(args *api.Load, reply *api.ValueResult) error {
 	var data []byte
-	fmt.Printf("getting %s from groupcache\n", args.Key)
+	fmt.Printf("cli asked for %s from groupcache\n", args.Key)
 	err := s.cacheGroup.Get(nil, args.Key,
 		groupcache.AllocatingByteSliceSink(&data))
 
