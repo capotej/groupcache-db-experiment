@@ -4,8 +4,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/capotej/groupcachedb/api"
-	"github.com/capotej/groupcachedb/slowdb"
+	"github.com/capotej/groupcache-db-experiment/api"
+	"github.com/capotej/groupcache-db-experiment/slowdb"
 	"net"
 	"net/http"
 	"net/rpc"
