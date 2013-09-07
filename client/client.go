@@ -4,7 +4,7 @@ package client
 
 import (
 	"fmt"
-	"github.com/capotej/groupcachedb/api"
+	"github.com/capotej/groupcache-db-experiment/api"
 	"net/rpc"
 )
 

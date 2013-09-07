@@ -5,8 +5,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/capotej/groupcachedb/api"
-	"github.com/capotej/groupcachedb/client"
+	"github.com/capotej/groupcache-db-experiment/api"
+	"github.com/capotej/groupcache-db-experiment/client"
 	"github.com/golang/groupcache"
 	"net"
 	"net/http"
